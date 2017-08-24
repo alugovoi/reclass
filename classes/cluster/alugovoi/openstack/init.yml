@@ -82,36 +82,36 @@ parameters:
     openstack_notification_topics: notifications
 
     # openstack service addresses
-    openstack_proxy_address: 10.0.1.80
-    openstack_proxy_node01_address: 10.0.1.81
-    openstack_proxy_node02_address: 10.0.1.82
-    openstack_control_address: 10.0.1.10
-    openstack_control_node01_address: 10.0.1.11
-    openstack_control_node02_address: 10.0.1.12
-    openstack_control_node03_address: 10.0.1.13
-    openstack_database_address: 10.0.1.50
-    openstack_database_node01_address: 10.0.1.51
-    openstack_database_node02_address: 10.0.1.52
-    openstack_database_node03_address: 10.0.1.53
-    openstack_message_queue_address: 10.0.1.40
-    openstack_message_queue_node01_address: 10.0.1.41
-    openstack_message_queue_node02_address: 10.0.1.42
-    openstack_message_queue_node03_address: 10.0.1.43
+    openstack_proxy_address: 192.168.10.80
+    openstack_proxy_node01_address: 192.168.10.81
+    openstack_proxy_node02_address: 192.168.10.82
+    openstack_control_address: 192.168.10.10
+    openstack_control_node01_address: 192.168.10.11
+    openstack_control_node02_address: 192.168.10.12
+    openstack_control_node03_address: 192.168.10.13
+    openstack_database_address: 192.168.10.50
+    openstack_database_node01_address: 192.168.10.51
+    openstack_database_node02_address: 192.168.10.52
+    openstack_database_node03_address: 192.168.10.53
+    openstack_message_queue_address: 192.168.10.40
+    openstack_message_queue_node01_address: 192.168.10.41
+    openstack_message_queue_node02_address: 192.168.10.42
+    openstack_message_queue_node03_address: 192.168.10.43
 
-    openstack_telemetry_address: 10.0.1.75
-    openstack_telemetry_node01_address: 10.0.1.76
-    openstack_telemetry_node02_address: 10.0.1.77
-    openstack_telemetry_node03_address: 10.0.1.78
-    openstack_gateway_node01_address: 10.0.1.224
-    openstack_gateway_node02_address: 10.0.1.225
-    openstack_gateway_node03_address: 10.0.1.226
-    openstack_gateway_node01_tenant_address: 10.0.2.6
-    openstack_gateway_node02_tenant_address: 10.0.2.7
-    openstack_gateway_node03_tenant_address: 10.0.2.8
+    openstack_telemetry_address: 192.168.10.75
+    openstack_telemetry_node01_address: 192.168.10.76
+    openstack_telemetry_node02_address: 192.168.10.77
+    openstack_telemetry_node03_address: 192.168.10.78
+    openstack_gateway_node01_address: 192.168.10.224
+    openstack_gateway_node02_address: 192.168.10.225
+    openstack_gateway_node03_address: 192.168.10.226
+    openstack_gateway_node01_tenant_address: 10.1.0.6
+    openstack_gateway_node02_tenant_address: 10.1.0.7
+    openstack_gateway_node03_tenant_address: 10.1.0.8
 
     # OpenStack Compute
-    openstack_compute_rack01_single_subnet: 10.0.1
-    openstack_compute_rack01_tenant_subnet: 10.0.2
+    openstack_compute_rack01_single_subnet: 192.168.10
+    openstack_compute_rack01_tenant_subnet: 10.1.0
     openstack_compute_rack01_hostname: cmp
 
     # openstack service hostnames
@@ -139,7 +139,7 @@ parameters:
     openstack_gateway_node03_hostname: gtw03
 
     openstack_benchmark_node01_hostname: bmk01
-    openstack_benchmark_node01_address: 10.0.1.95
+    openstack_benchmark_node01_address: 192.168.10.95
 
     # Billing
     #keystone_billometer_password: Hwjzskcab2Bwv1yp
