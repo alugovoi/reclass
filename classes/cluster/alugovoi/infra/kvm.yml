@@ -4,7 +4,7 @@ classes:
 - system.linux.system.repo_local.mcp.extra
 - system.linux.system.repo_local.ubuntu
 - system.linux.system.repo_local.glusterfs
-- system.linux.system.repo_local.saltstack.xenial
+- system.linux.system.repo_local.salt
 - service.keepalived.cluster.single
 - system.glusterfs.server.cluster
 - system.glusterfs.server.volume.salt_pki
@@ -179,7 +179,7 @@ parameters:
           netmask: ${_param:control_network_netmask}
           use_interfaces:
           - bond0.${_param:control_vlan}
-  #   system:
+     system:
   #     package:
   #       linux-image-4.8.0-39-generic:
   #         version: latest
@@ -189,12 +189,12 @@ parameters:
   #         version: latest
   #       linux-headers-4.8.0-39:
   #         version: latest
-  #     user:
-  #       root:
-  #         enabled: true
-  #         name: root
-  #         home: /root
-  #         # Password is cloudlab, comment out, configure your SSH key bellow
-  #         # and disable password auth
-  #         password: $6$0Qqj.6l.$T9k9Onm9pIDo6ULABVBRNogyizG.9CnwQ4bvI4xH.AWeIGHbLyFU87ejMTtKvAAyd3dncRYbeUV.VbnXJU2u./
+       user:
+         root:
+           enabled: true
+           name: root
+           home: /root
+           # Password is cloudlab, comment out, configure your SSH key bellow
+           # and disable password auth
+           password: $6$0Qqj.6l.$T9k9Onm9pIDo6ULABVBRNogyizG.9CnwQ4bvI4xH.AWeIGHbLyFU87ejMTtKvAAyd3dncRYbeUV.VbnXJU2u./
 

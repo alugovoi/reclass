@@ -22,8 +22,8 @@ parameters:
     infra_config_hostname: cfg01
     salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}
     # infra service addresses
-    infra_config_address: 192.168.10.15
-    infra_config_deploy_address: 172.16.10.15
+    infra_config_address: 192.168.10.20
+    infra_config_deploy_address: 172.16.10.20
 
     cluster_domain: mirantis.local
     cluster_name: alugovoi
@@ -34,8 +34,8 @@ parameters:
 
     dns_server01: 8.8.8.8
     dns_server02: 8.8.4.4
-    control_vlan: 10
-    tenant_vlan: 20
+    control_vlan: 1
+    tenant_vlan: 1
 
     deploy_network_netmask: 255.255.255.0
     deploy_network_gateway: 172.16.10.1
@@ -45,7 +45,7 @@ parameters:
     infra_maas_node01_hostname: mas01
     maas_admin_username: mirantis
     maas_admin_password: a9osoOWFhjhpjX20
-    maas_db_password: REPLACE_BY_GENERATED_VALUE_DURING_INSTALL
+    maas_db_password: OLpv4l2GVdfJ
     infra_kvm_address: 192.168.10.240
     infra_kvm_node01_address: 192.168.10.241
     infra_kvm_node02_address: 192.168.10.242
@@ -119,3 +119,7 @@ parameters:
       service:
         apt-daily.timer:
           status: dead
+
+  openssh:
+    server:
+      permit_root_login: yes
