@@ -8,41 +8,32 @@ classes:
 - cluster.alugovoi.infra
 parameters:
   _param:
-    interface_mtu: 1500
+#    interface_mtu: 1500
     cluster_vip_address: ${_param:openstack_control_address}
 
     linux_system_codename: xenial
     keepalived_vip_interface: br-ctl
     keepalived_vip_virtual_router_id: 69
-    primary_first_nic: eth1
-    primary_second_nic: eth2
+    primary_first_nic: ens2
+    primary_second_nic: ens3
   linux:
     network:
       bridge: openvswitch
       interface:
-        eth1:
+        nic1:
           enabled: true
-          type: slave
-          proto: manual
+          type: eth
+          proto: dhcp
           name: ${_param:primary_first_nic}
-          master: bond0
-        eth2:
+          mtu: 1450
+        nic2:
           enabled: true
-          type: slave
-          proto: manual
-          name: ${_param:primary_second_nic}
-          master: bond0
-        bond0:
-          enabled: true
+          type: eth
           proto: manual
           ovs_bridge: br-floating
           ovs_type: OVSPort
-          type: bond
-          use_interfaces:
-          - ${_param:primary_first_nic}
-          - ${_param:primary_second_nic}
-          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
-          mode: active-backup
+          name: ${_param:primary_second_nic}
+          mtu: 1450
         br-floating:
           enabled: true
           type: ovs_bridge

@@ -10,6 +10,7 @@ parameters:
           enabled: true
           name: ens3
           type: eth
+          mtu: 1450
           proto: static
           netmask: ${_param:deploy_network_netmask}
           address: ${_param:single_address}
