@@ -21,7 +21,7 @@ parameters:
     infra_config_address: 192.168.10.15
     infra_config_deploy_address: 172.16.10.15
 
-    cluster_domain: mirantis.local
+    cluster_domain: k8s.local
     cluster_name: k8s-al
     cluster_public_host: ${_param:openstack_proxy_address}
 
