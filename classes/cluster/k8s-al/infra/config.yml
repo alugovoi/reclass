@@ -1,0 +1,68 @@
+classes:
+- system.linux.system.repo.mcp.salt
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.ubuntu
+- system.linux.system.repo.glusterfs
+- system.openssh.client.lab
+- system.salt.master.pkg
+- system.salt.minion.ca.salt_master
+- system.salt.master.api
+- system.reclass.storage.salt
+- system.xtrabackup.server.single
+- system.reclass.storage.system.opencontrail_analytics_cluster
+- system.reclass.storage.system.opencontrail_control_cluster
+- system.salt.minion.cert.k8s_server
+- system.reclass.storage.system.kubernetes_control_cluster
+- cluster.k8s-al.infra
+parameters:
+  _param:
+    salt_master_base_environment: prd
+    reclass_data_repository: "https://github.com/alugovoi/reclass.git "
+    reclass_data_revision: master
+    reclass_config_master: ${_param:infra_config_deploy_address}
+    single_address: ${_param:infra_config_address}
+    deploy_address: ${_param:infra_config_deploy_address}
+    linux_system_codename: xenial
+    salt_api_password_hash: "$6$cbHiEqsI$59IMt0VvtcrSsPTHAiOXSdXj/eus2hz.AQP3VFUJX6eSNDRAM5vJG8M5nAhM2sBHNP1DN3b5.OYI2wp9s.9gY0"
+    salt_master_host: ${_param:infra_config_deploy_address}
+  reclass:
+    storage:
+      node:
+        kubernetes_control_node01:
+          params:
+            tenant_address: ${_param:kubernetes_control_node01_tenant_address}
+        kubernetes_control_node02:
+          params:
+            tenant_address: ${_param:kubernetes_control_node02_tenant_address}
+        kubernetes_control_node03:
+          params:
+            tenant_address: ${_param:kubernetes_control_node03_tenant_address}
+        kubernetes_compute_node01:
+          name: ${_param:kubernetes_compute_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.kubernetes.compute
+          params:
+            salt_master_host: ${_param:infra_config_address}
+            linux_system_codename: xenial
+            single_address: ${_param:kubernetes_compute_node01_address}
+            tenant_address: ${_param:kubernetes_compute_node01_tenant_address}
+        kubernetes_compute_node02:
+          name: ${_param:kubernetes_compute_node02_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.kubernetes.compute
+          params:
+            salt_master_host: ${_param:infra_config_address}
+            linux_system_codename: xenial
+            single_address: ${_param:kubernetes_compute_node02_address}
+            tenant_address: ${_param:kubernetes_compute_node02_tenant_address}
+        opencontrail_control_node01:
+          params:
+            rabbitmq_cluster_role: master
+        opencontrail_control_node02:
+          params:
+            rabbitmq_cluster_role: slave
+        opencontrail_control_node03:
+          params:
+            rabbitmq_cluster_role: slave

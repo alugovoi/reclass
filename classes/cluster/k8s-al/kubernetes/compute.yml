@@ -1,0 +1,30 @@
+classes:
+- system.linux.system.repo.docker
+- system.linux.system.repo.ubuntu
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
+- system.kubernetes.pool.cluster
+- system.salt.minion.cert.k8s_client
+- system.salt.minion.cert.etcd_client
+- cluster.k8s-al.opencontrail.compute
+- cluster.k8s-al.infra
+parameters:
+  docker:
+    host:
+      pkgs:
+        - docker-engine=1.12.6-0~ubuntu-xenial
+        - python-docker
+  kubernetes:
+    pool:
+      network:
+        no_default_pools: false
+        etcd:
+          ssl:
+            enabled: True}
+        engine: opencontrail
+        config:
+          api:
+            host: ${_param:opencontrail_control_address}
+    common:
+      hyperkube:
+        image: ${_param:kubernetes_hyperkube_image}

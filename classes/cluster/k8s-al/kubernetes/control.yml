@@ -1,0 +1,51 @@
+classes:
+- service.etcd.server.cluster
+- system.haproxy.proxy.listen.kubernetes.apiserver
+- system.linux.system.repo.docker
+- system.linux.system.repo.ubuntu
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
+- system.salt.minion.cert.etcd_server
+- system.kubernetes.master.cluster
+- cluster.k8s-al.kubernetes.compute
+- cluster.k8s-al.infra
+parameters:
+  _param:
+    keepalived_vip_interface: ens4
+    keepalived_vip_virtual_router_id: 65
+  etcd:
+    server:
+      source:
+        engine: docker_hybrid
+      ssl:
+        enabled: True
+  kubernetes:
+    master:
+      etcd:
+        ssl:
+          enabled: True
+      network:
+        etcd:
+          ssl:
+            enabled: True
+        engine: opencontrail
+        public_ip_range: 10.151.0.0/16
+        public_network: default-domain:default-project:Public
+        private_ip_range: 10.150.0.0/16
+        config:
+          api:
+            host: ${_param:opencontrail_control_address}
+      namespace:
+        netchecker:
+          enabled: true
+      addons:
+        netchecker:
+          enabled: true
+        helm:
+          enabled: false
+        dashboard:
+          enabled: False
+        contrail_network_controller:
+          namespace: kube-system
+          enabled: true
+          image: ${_param:kubernetes_contrail_network_controller_image}
